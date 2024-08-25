@@ -59,7 +59,7 @@ useEffect(()=>{
                             <div className='truncate'> Address :{detail.contract.address}</div>
                         </div>
                         <div className='flex mt-1 justify-center ' >
-                            <button className='flex justify-center p-2 w-full bg-blue-600 rounded-3xl' onClick={() => window.open(detail.url || 'https://opensea.io/')}>Buy</button>
+                            <button className='flex justify-center p-2 w-full bg-blue-600 rounded-3xl' onClick={() => window.open(detail.collection.url || 'https://opensea.io/')}>Explore and Buy</button>
                         </div>
                     </div>
                 ))}
