@@ -15,6 +15,7 @@ import ReceiveEth from './pages/receiveEth';
 import MintNFT from './pages/mintNFT';
 import Policies from './pages/policies';
 import Services from './pages/services';
+import Nfts from './pages/nfts';
 import { BrowserProvider, Transaction } from 'ethers';
 import { useState } from 'react';
 
@@ -45,6 +46,7 @@ function App() {
             <Route path="/mintNFT" element={<MintNFT />} />
             <Route path="/policies" element={<Policies />} />
             <Route path="/services" element={<Services />}/>
+            <Route path="/nfts" element={<Nfts />} />
           </Routes>
         </div>
         <Footer />
