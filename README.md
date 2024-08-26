@@ -34,6 +34,8 @@ The **Check Balance** page displays the current Ethereum balance of the connecte
 
 The **Mint NFTs** page enables users to create and mint their own NFTs on the Ethereum blockchain. Users input details for their NFT, and the minting process is handled through a smart contract.
 
+**TestNet for Minting NFTs : Sepolia**
+
 **Contract Address for Minting NFTs:**  
 `0xe47fc10cc5994b9794b5bd8bda1094e2ca9dff14`
 
@@ -41,12 +43,16 @@ The **Mint NFTs** page enables users to create and mint their own NFTs on the Et
 
 The **View Transactions** page shows a history of all Ethereum transactions made by the user. It retrieves transaction data from the blockchain and presents it in a list format.
 
+**TestNet for Transactions : Sepolia**
+
 **Contract Address for Viewing Transactions:**  
 `0x9ceed7b63162838afc2c5b7a4fe91352f840623f`
 
 ### 💵 Loan Services
 
 The **Loan Services** page provides functionality for users to take out and repay loans. It interacts with the loan smart contract to manage loan requests and repayments.
+
+**TestNet for Loan Services : Sepolia**
 
 **Contract Address for Loan Services:**  
 `0x44ceb3891b9c19c57f69ba9e7892ac1338db9da1`
