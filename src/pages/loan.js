@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ABI from './contracts/Loan.json'
 
 const LoanManagerAddress = "0x44ceb3891b9c19c57f69ba9e7892ac1338db9da1"; 
@@ -16,10 +18,16 @@ const LoanPage = () => {
   useEffect(() => {
     const checkMetaMaskConnection = async () => {
       if (typeof window.ethereum !== 'undefined') {
-        const provider = new ethers.BrowserProvider(window.ethereum);
-        const accounts = await provider.send('eth_requestAccounts', []);
-        setAccount(accounts[0]);
-        fetchUserLoans(accounts[0]);
+        try {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const accounts = await provider.send('eth_requestAccounts', []);
+          setAccount(accounts[0]);
+          fetchUserLoans(accounts[0]);
+        } catch (error) {
+          toast.error('Failed to connect to MetaMask');
+        }
+      } else {
+        toast.error('MetaMask is not installed');
       }
     };
 
@@ -42,14 +50,18 @@ const LoanPage = () => {
         duration: loan.duration.toString(),
         isRepaid: loan.isRepaid
       })));
+      toast.success('Loans fetched successfully');
     } catch (error) {
-      console.error('Error fetching user loans:', error);
+      toast.error('Error fetching user loans: ' + error.message);
     }
   };
 
   const createLoan = async () => {
     try {
-      if (!account) return alert('Connect MetaMask first!');
+      if (!account) {
+        toast.error('Connect MetaMask first!');
+        return;
+      }
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const loanManagerContract = new ethers.Contract(LoanManagerAddress, LoanManagerABI, signer);
@@ -60,16 +72,19 @@ const LoanPage = () => {
         { value: ethers.parseEther(amount) }
       );
       await tx.wait();
-      console.log('Loan created successfully');
+      toast.success('Loan created successfully');
       fetchUserLoans(account);
     } catch (error) {
-      console.error('Error creating loan:', error);
+      toast.error('Error creating loan: ' + error.message);
     }
   };
 
   const repayLoan = async () => {
     try {
-      if (!account) return alert('Connect MetaMask first!');
+      if (!account) {
+        toast.error('Connect MetaMask first!');
+        return;
+      }
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const loanManagerContract = new ethers.Contract(LoanManagerAddress, LoanManagerABI, signer);
@@ -82,15 +97,16 @@ const LoanPage = () => {
         value: repaymentAmount
       });
       await tx.wait();
-      console.log('Loan repaid successfully');
+      toast.success('Loan repaid successfully');
       fetchUserLoans(account);
     } catch (error) {
-      console.error('Error repaying loan:', error);
+      toast.error('Error repaying loan: ' + error.message);
     }
   };
 
   return (
     <div className="p-8 mt-10 mb-1 rounded-3xl bg-gray-900 text-white min-h-screen w-5/6 flex flex-col items-center">
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       <h1 className="text-3xl font-bold mb-8">Loan Management System</h1>
       <div className="w-full max-w-lg">
         <div className="bg-gray-800 p-6 rounded-lg mb-8">

@@ -10,7 +10,7 @@ function MintNFT() {
   const [mintType, setMintType] = useState('addressTokenURI');
   const [mintedNFT, setMintedNFT] = useState(null);
 
-  const contractAddress = '0x96e8cb1b39cbe9ea1ca93c31ac19f6fa5851f494'; // Replace with your deployed contract address
+  const contractAddress = '0xe47fc10cc5994b9794b5bd8bda1094e2ca9dff14'; 
 
   const mintNFT = async () => {
     if (!recipient) {
@@ -39,15 +39,15 @@ function MintNFT() {
 
         await tx.wait();
 
-        // Convert BigInt to Number (safe to do if the number is within the safe range)
+       
         const tokenIdBigInt = await nftContract.nextTokenId();
-        const tokenId = Number(tokenIdBigInt) - 1; // Convert to number and adjust
+        const tokenId = Number(tokenIdBigInt) - 1;
 
-        // Set the minted NFT details only after the transaction is confirmed
+       
         const newNFT = { tokenId, tokenURI, recipient, txHash: tx.hash };
         setMintedNFT(newNFT);
 
-        // Show success notification after setting the minted NFT details
+      
         toast.success(`NFT minted successfully! Transaction Hash: ${tx.hash}`);
       } else {
         toast.error('MetaMask is not installed.');
