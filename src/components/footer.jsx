@@ -10,6 +10,9 @@ function Footer() {
           <p className="text-sm text-gray-500 mt-2">Empowering decentralized finance.</p>
         </div>
         <div className="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 mb-6 md:mb-0">
+        <Link to="/loan" className="text-gray-400 hover:text-white transition duration-300">
+            Loan
+          </Link>
           <Link to="/nfts" className="text-gray-400 hover:text-white transition duration-300">
             NFTs
           </Link>
@@ -25,7 +28,7 @@ function Footer() {
           <Link to="/about" className="text-gray-400 hover:text-white transition duration-300">
             About
           </Link>
-
+          
           <Link to="/contact" className="text-gray-400 hover:text-white transition duration-300">
             Contact Us
           </Link>

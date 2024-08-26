@@ -16,6 +16,7 @@ import MintNFT from './pages/mintNFT';
 import Policies from './pages/policies';
 import Services from './pages/services';
 import Nfts from './pages/nfts';
+import LoanPage from './pages/loan';
 import { BrowserProvider, Transaction } from 'ethers';
 import { useState } from 'react';
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="/policies" element={<Policies />} />
             <Route path="/services" element={<Services />}/>
             <Route path="/nfts" element={<Nfts />} />
+            <Route path="/loan" element={<LoanPage />} />
           </Routes>
         </div>
         <Footer />

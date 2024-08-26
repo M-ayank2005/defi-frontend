@@ -42,6 +42,7 @@ function Header({ onProfileClick } ) {
             <li>
               <Link to="/myPrivateKey" className="text-lg hover:text-gray-200 transition duration-300">MyPrivateKey</Link>
             </li>
+    
             <li>
               <Link to="/contact" className="text-lg hover:text-gray-200 transition duration-300">ContactUs</Link>
             </li>
