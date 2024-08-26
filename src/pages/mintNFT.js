@@ -36,7 +36,7 @@ function MintNFT() {
         } else if (mintType === 'addr') {
           tx = await nftContract.mintToken(1, recipient, ''); // Mint without tokenURI
         }
-
+        
         await tx.wait();
 
        
@@ -109,7 +109,7 @@ function MintNFT() {
           <div className="p-4 border rounded">
             <p><strong>Token ID:</strong> {mintedNFT.tokenId}</p>
             <p><strong>Recipient:</strong> {mintedNFT.recipient}</p>
-            <p><strong>Transaction Hash:</strong> {mintedNFT.txHash}</p>
+            <p className='text-wrap'><strong>Transaction Hash:</strong> {mintedNFT.txHash}</p>
             {mintedNFT.tokenURI && (
               <p>
                 <strong>Token URI:</strong> <a href={mintedNFT.tokenURI} target="_blank" rel="noopener noreferrer">{mintedNFT.tokenURI}</a>

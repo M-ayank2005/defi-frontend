@@ -11,31 +11,41 @@ function Services() {
           <div className="bg-black rounded-lg shadow-lg p-6">
             <h2 className="text-2xl font-semibold mb-4">Send ETH</h2>
             <p className="text-lg mb-4">Easily send Ethereum to any address securely.</p>
-            <Link to="/sendEth" className="text-blue-400 hover:underline">Learn More</Link>
+            <Link to="/sendEth" className="text-blue-400 hover:underline">Go to page</Link>
           </div>
 
           <div className="bg-black rounded-lg shadow-lg p-6">
             <h2 className="text-2xl font-semibold mb-4">Receive ETH</h2>
             <p className="text-lg mb-4">Receive Ethereum securely with our QR code system.</p>
-            <Link to="/receiveEth" className="text-blue-400 hover:underline">Learn More</Link>
+            <Link to="/receiveEth" className="text-blue-400 hover:underline">Go to page</Link>
           </div>
 
           <div className="bg-black rounded-lg shadow-lg p-6">
             <h2 className="text-2xl font-semibold mb-4">Check Balance</h2>
             <p className="text-lg mb-4">View the current balance of your Ethereum account.</p>
-            <Link to="/balance" className="text-blue-400 hover:underline">Learn More</Link>
+            <Link to="/balance" className="text-blue-400 hover:underline">Go to page</Link>
           </div>
 
           <div className="bg-black rounded-lg shadow-lg p-6">
             <h2 className="text-2xl font-semibold mb-4">Mint NFTs</h2>
             <p className="text-lg mb-4">Create and mint your own NFTs on the blockchain.</p>
-            <Link to="/mintNFT" className="text-blue-400 hover:underline">Learn More</Link>
+            <Link to="/mintNFT" className="text-blue-400 hover:underline">Go to page</Link>
           </div>
 
           <div className="bg-black rounded-lg shadow-lg p-6">
             <h2 className="text-2xl font-semibold mb-4">View Transactions</h2>
             <p className="text-lg mb-4">Track and view your previous Ethereum transactions.</p>
-            <Link to="/transactions" className="text-blue-400 hover:underline">Learn More</Link>
+            <Link to="/transactions" className="text-blue-400 hover:underline">Go to page</Link>
+          </div>
+          <div className="bg-black rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-semibold mb-4">Buy NFTs from MarketPalce</h2>
+            <p className="text-lg mb-4">Explore NFTs and buy them from the open MarketPlace.</p>
+            <Link to="/transactions" className="text-blue-400 hover:underline">Go to page</Link>
+          </div>
+          <div className="bg-black rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-semibold mb-4">Loan</h2>
+            <p className="text-lg mb-4">Taking Loan and Repay the loan.</p>
+            <Link to="/transactions" className="flex-end text-blue-400 hover:collapse">Go to page</Link>
           </div>
         </div>
       </div>

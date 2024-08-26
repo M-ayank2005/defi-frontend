@@ -12,7 +12,7 @@ function Header({ onProfileClick } ) {
   };
 
   return (
-    <header className="bg-blue-500 text-white py-3 shadow-lg">
+    <header className="bg-blue-900 text-white py-3 shadow-lg">
       <div className="container mx-auto flex justify-between items-center px-0">
         <div className="flex items-center space-x-3">
           <img 
@@ -50,7 +50,7 @@ function Header({ onProfileClick } ) {
             
             </li>
             <button
-                className="px-5 ml-3 py-2 rounded-full text-sm font-bold text-white bg-yellow-500 hover:bg-red-600 shadow-md transition duration-300"
+                className="px-5 ml-3 py-2 rounded-full text-sm font-bold text-white bg-green-500 hover:bg-red-600 shadow-md transition duration-300"
                 onClick={toggleProfile}
               >
                 Profile
