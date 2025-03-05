@@ -27,6 +27,7 @@ function App() {
   const toggleProfile = () => {
     setIsProfileOpen(!isProfileOpen);
   };
+  
   return (
     <Router>
       <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-900 via-purple-900 to-indigo-900 text-white">
