@@ -30,21 +30,53 @@ function Balance() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen text-white">
-      <div className="bg-black opacity-70 rounded-lg shadow-xl p-12 px-20 w-full text-center">
-        <h1 className="text-3xl font-extrabold mb-4">Account Balance</h1>
-        {account ? (
-          <>
-            <p className="text-lg font-semibold text-gray-100 mb-2">Connected Address:</p>
-            <p className="text-sm mb-4 text-gray-200 break-all">{account}</p>
-            <p className="text-2xl font-bold text-white">Balance:</p>
-            <p className="text-2xl font-extrabold text-red-700">{balance} ETH</p>
-          </>
-        ) : (
-          <p className="text-gray-200 text-center">Loading account information...</p>
-        )}
+    <div className="flex items-center justify-center min-h-screen  text-white px-4">
+      <div className="w-full max-w-2xl">
+        <div className="backdrop-blur-lg bg-white/5 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.37)] border border-white/10 p-8 sm:p-12">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-8 bg-gradient-to-r from-blue-500 to-gray-600 bg-clip-text text-transparent">
+            Account Balance
+          </h1>
+          
+          {account ? (
+            <div className="space-y-8">
+              <div className="p-6 bg-black/30 rounded-xl border border-white/5">
+                <p className="text-lg font-medium text-gray-400 mb-2">Connected Address</p>
+                <p className="font-mono text-sm text-blue-400 break-all">{account}</p>
+              </div>
+              
+              <div className="p-6 bg-black/30 rounded-xl border border-white/5">
+                <p className="text-lg font-medium text-gray-400 mb-2">Current Balance</p>
+                <div className="flex items-baseline justify-center gap-2">
+                  <p className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+                    {Number(balance).toFixed(4)}
+                  </p>
+                  <p className="text-xl text-gray-500 font-semibold">ETH</p>
+                </div>
+              </div>
+
+              <div className="text-center text-sm text-gray-500">
+                Last updated: {new Date().toLocaleTimeString()}
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center p-8">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+          )}
+        </div>
       </div>
-      <ToastContainer />
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

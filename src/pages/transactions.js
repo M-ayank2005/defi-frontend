@@ -29,8 +29,7 @@ function Transactions() {
           console.log("Formatted Transactions: ", formattedTxs); 
           setTransactions(formattedTxs); 
 
-          // Show success toast notification
-          toast.success('Fetched all transactions successfully');
+          toast.success('Transactions loaded successfully');
 
         } catch (err) {
           console.error("Error fetching transactions:", err);
@@ -46,26 +45,84 @@ function Transactions() {
   }, [contractAddress]);
 
   return (
-    <div className="flex my-5 rounded-lg flex-col items-center bg-black opacity-85 h-auto pt-10 px-5">
-      <h1 className="text-5xl font-extrabold text-white mb-8">Previous Transactions</h1>
-      <div className="w-full max-w-4xl bg-gray-900 rounded-lg  mb-5 shadow-lg overflow-hidden">
-        {transactions.length > 0 ? (
-          <ul className="divide-y py-2 divide-gray-700">
-            {transactions.map((tx, index) => (
-              <li key={index} className="p-4 transition duration-300 ease-in-out rounded-lg mb-4">
-                <p className="text-lg text-gray-300 mb-1"><span className="font-semibold text-white">Txs No:</span> {index + 1}</p>
-                <p className="text-lg text-gray-300 mb-1"><span className="font-semibold text-white">Sender:</span> {tx.sender}</p>
-                <p className="text-lg text-gray-300 mb-1"><span className="font-semibold text-white">Receiver:</span> {tx.receiver}</p>
-                <p className="text-lg text-gray-300 mb-1"><span className="font-semibold text-white">Amount:</span> {tx.amount} ETH</p>
-                <p className="text-lg text-gray-300"><span className="font-semibold text-white">Tx Hash:</span> {tx.message}</p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-400 text-center p-6">No transactions found.</p>
-        )}
+    <div className="min-h-screen w-full flex items-center justify-center text-white px-4 py-10">
+      <div className="w-full max-w-6xl">
+        <div className="backdrop-blur-lg bg-white/5 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.37)] border border-white/10 p-8">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-8 bg-gradient-to-r from-blue-500 to-gray-600 bg-clip-text text-transparent text-center">
+            Transaction History
+          </h1>
+
+          {transactions.length > 0 ? (
+            <div className="space-y-6">
+              {transactions.map((tx, index) => (
+                <div key={index} 
+                  className="p-6 bg-black/30 rounded-xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]"
+                >
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="bg-blue-500/20 text-blue-400 text-sm font-medium px-3 py-1 rounded-full">
+                          Transaction #{index + 1}
+                        </span>
+                        <span className="text-green-400 font-medium">
+                          {tx.amount} ETH
+                        </span>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                          <span className="text-gray-400">From:</span>
+                          <span className="font-mono text-sm text-blue-400 break-all">{tx.sender}</span>
+                        </div>
+                        
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                          <span className="text-gray-400">To:</span>
+                          <span className="font-mono text-sm text-blue-400 break-all">{tx.receiver}</span>
+                        </div>
+                        
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                          <span className="text-gray-400">Hash:</span>
+                          <span className="font-mono text-sm text-purple-400 break-all">{tx.message}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <a 
+                      href={`https://sepolia.etherscan.io/tx/${tx.message}`}
+                      target="_blank"
+                      rel="noopener noreferrer" 
+                      className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+                    >
+                      <span>View on Etherscan</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <div className="text-gray-400 text-lg">No transactions found</div>
+              <p className="text-gray-500 mt-2">Make a transaction to see it appear here</p>
+            </div>
+          )}
+        </div>
       </div>
-      <ToastContainer />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

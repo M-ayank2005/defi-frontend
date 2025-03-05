@@ -57,37 +57,69 @@ function SendEth() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center text-white">
-      <div className="p-20  bg-gray-900  opacity-90 rounded-lg shadow-2xl w-full max-w-md">
-        <h1 className="text-3xl font-bold mb-6 text-center">Send Ethers</h1>
-        <div className="mb-4">
-          <label className="block text-gray-400 mb-2">Recipient Address</label>
-          <input
-            type="text"
-            value={recipient}
-            onChange={(e) => setRecipient(e.target.value)}
-            className="w-full px-2 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="0x..."
-          />
+    <div className="min-h-screen flex items-center justify-center text-white px-4">
+      <div className="w-full max-w-2xl">
+        <div className="backdrop-blur-lg bg-white/5 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.37)] border border-white/10 p-8 sm:p-12">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-8 bg-gradient-to-r from-blue-500 to-gray-600 bg-clip-text text-transparent text-center">
+            Send Ethereum
+          </h1>
+
+          <div className="space-y-6">
+            <div className="space-y-2">
+              <label className="text-lg font-medium text-gray-300">Recipient Address</label>
+              <div className="relative">
+                <input
+                  type="text"
+                  value={recipient}
+                  onChange={(e) => setRecipient(e.target.value)}
+                  className="w-full px-4 py-3 bg-black/30 rounded-xl border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all duration-200"
+                  placeholder="Enter wallet address (0x...)"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-lg font-medium text-gray-300">Amount</label>
+              <div className="relative">
+                <input
+                  type="text"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                  className="w-full px-4 py-3 bg-black/30 rounded-xl border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all duration-200"
+                  placeholder="Enter amount in ETH"
+                />
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">
+                  ETH
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={sendTransaction}
+              className="w-full mt-8 py-4 px-6 rounded-xl bg-blue-400 text-white text-lg font-bold hover:from-blue-700 hover:to-purple-700 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-blue-500/25 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            >
+              Send Transaction
+            </button>
+
+            <div className="text-center text-sm text-gray-400 mt-6">
+              <p>Make sure you have enough ETH in your wallet to cover the transaction fee</p>
+            </div>
+          </div>
         </div>
-        <div className="mb-6">
-          <label className="block text-gray-400 mb-2">Amount (ETH)</label>
-          <input
-            type="text"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="0.01"
-          />
-        </div>
-        <button
-          onClick={sendTransaction}
-          className="w-full py-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 text-lg font-bold hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition duration-300 ease-in-out shadow-lg"
-        >
-          Send ETH
-        </button>
-        <ToastContainer />
       </div>
+      
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

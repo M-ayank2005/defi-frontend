@@ -30,7 +30,7 @@ function App() {
   
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-900 via-purple-900 to-indigo-900 text-white">
+      <div className="flex flex-col min-h-screen bg-black/95 text-white">
         <Header  onProfileClick={toggleProfile} />
         <div className="flex-grow container mx-auto flex flex-col items-center justify-center">
           <Routes>
